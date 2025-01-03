@@ -22,8 +22,11 @@ app.use(express.urlencoded({ extended: true }));
     const channel = await CreateChannel();
 
     await notificationRoutes(app, channel);
-    app.listen(8004, () => {
-      console.log("Notifications is Listening to Port 8004");
+    // app.listen(8004, () => {
+    //   console.log("Notifications is Listening to Port 8004");
+    // });
+    app.get("/health", (req, res) => {
+      res.send("Notification Service Running");
     });
   } catch (err) {
     console.log("Failed to start app:", err);
