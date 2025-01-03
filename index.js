@@ -14,7 +14,7 @@ const { CreateChannel, SubscribeMessage } = require("./utils");
 require("dotenv").config();
 app.use(express.urlencoded({ extended: true }));
 
-async function startApp() {
+(async function startApp() {
   try {
     await mongoose.connect(process.env.DB_URI);
     print("Connected to Notifications DB");
@@ -28,6 +28,6 @@ async function startApp() {
   } catch (err) {
     console.log("Failed to start app:", err);
   }
-}
+})();
 
-startApp();
+module.exports = app;
